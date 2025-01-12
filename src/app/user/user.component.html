@@ -1,0 +1,17 @@
+<div>
+  <button (click) = "onSelectUser()">
+    <!-- property binding -->
+    <!-- <img
+      [src]="'assets/users/' + selectedUser.avatar"
+      [alt]="selectedUser.name"
+    /> -->
+
+    <!-- Use getter as a property -->
+    <img
+      [src]="imagePath"
+      [alt]="selectedUser.name"
+    />
+    <!-- string interpolation -->
+    <span>{{ selectedUser.name }}</span>
+  </button>
+</div>
