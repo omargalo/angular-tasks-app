@@ -1,9 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
-
-//helper to select random dummy user
-const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -12,23 +7,12 @@ const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  //selectedUser = DUMMY_USERS[randomIndex];
+ @Input() avatar!: string;
+ @Input() name!: string;
 
-  // Using signal to notify the parent component
-  selectedUser = signal(DUMMY_USERS[randomIndex]);
+ get imagePath() {
+  return 'assets/users/' + this.avatar;
+ }
 
-  /* get imagePath() {
-    return 'assets/users/' + this.selectedUser.avatar;
-  } */
-
-  // Read the value of the signal using computed property
-  imagePath = computed(() => 'assets/users/' + this.selectedUser().avatar);
-
-  onSelectUser() {
-    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
-    //this.selectedUser = DUMMY_USERS[randomIndex];
-
-    // Change the value of the signal
-    this.selectedUser.set(DUMMY_USERS[randomIndex]);
-  }
+  onSelectUser() {}
 }
