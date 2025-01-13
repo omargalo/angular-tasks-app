@@ -6,12 +6,14 @@
       [alt]="selectedUser.name"
     /> -->
 
-    <!-- Use getter as a property -->
+    <!-- Use getter as a property,
+     whenever we are dealing with a property that stores a signal,
+     we have to excecute this property as a function to get the value -->
     <img
-      [src]="imagePath"
-      [alt]="selectedUser.name"
+      [src]="imagePath()"
+      [alt]="selectedUser().name"
     />
     <!-- string interpolation -->
-    <span>{{ selectedUser.name }}</span>
+    <span>{{ selectedUser().name }}</span>
   </button>
 </div>
